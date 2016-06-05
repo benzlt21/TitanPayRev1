@@ -1,25 +1,24 @@
-STANDARD = 8
+HOURS = 8
 OVERTIME = 1.5
 
 
 class TimeCard:
 
-    def __init__(self, date, start_time, end_time):
+    def __init__(self, date, start_time, end_time, rate):
         self.__date = date
         self.__start_time = start_time
         self.__end_time = end_time
+        self.__rate = rate
 
-    def set_date(self, date):
-        self.__date = date
+    def calculate_daily_pay(self, start_time, end_time, rate):
+        hours = (end_time + 12) - start_time
+        if hours <= HOURS:
+            total_pay = (HOURS * rate)
+        else:
+            overtime_pay = ((hours - HOURS) * OVERTIME * rate)
+            regular_pay = (HOURS * rate)
+            total_pay = overtime_pay + regular_pay
+        return total_pay
 
-    def set_start_time(self, start_time):
-        self.__start_time = start_time
-
-    def set_end_time(self, end_time):
-        self.__end_time = end_time
-
-    def calculate_daily_pay(self):
-
-        return (self.__end_time + 12) - self.__start_time
 
 

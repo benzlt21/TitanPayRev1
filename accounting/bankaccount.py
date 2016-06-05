@@ -5,15 +5,6 @@ class BankAccount:
         self.__routing_number = routing_number
         self.__account_id = account_id
 
-    def set_bank_name(self, bank_name):
-        self.__bank_name = bank_name
-
-    def set_routing_number(self, routing_number):
-        self.__routing_number = routing_number
-
-    def set_account_id(self, account_id):
-        self.__account_id = account_id
-
     def get_bank_name(self):
         return self.__bank_name
 
