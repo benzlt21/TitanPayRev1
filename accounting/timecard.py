@@ -5,10 +5,10 @@ OVERTIME = 1.5
 class TimeCard:
 
     def __init__(self, date, start_time, end_time, rate):
-        self.__date = date
-        self.__start_time = start_time
-        self.__end_time = end_time
-        self.__rate = rate
+        self.date = date
+        self.start_time = start_time
+        self.end_time = end_time
+        self.rate = rate
 
     def calculate_daily_pay(self, start_time, end_time, rate):
         hours = (end_time + 12) - start_time
