@@ -1,6 +1,10 @@
+from accounting.paymentmethod import PaymentMethod
+
+
 class Employee:
 
-    def __init__(self, employee_id, first_name, last_name, weekly_dues):
+    def __init__(self, employee_id, first_name, last_name, weekly_dues, payment_method):
+        PaymentMethod.__init__(payment_method)
         self.__employee_id = employee_id
         self.__first_name = first_name
         self.__last_name = last_name

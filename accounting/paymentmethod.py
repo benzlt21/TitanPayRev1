@@ -1,13 +1,8 @@
-from accounting.employee import Employee
-from accounting.address import Address
-from accounting.hourlyemployee import HourlyEmployee
-from accounting.salariedemployee import SalariedEmployee
+class PaymentMethod:
+
+    def __init__(self, payment_method, total_pay, commission):
+        self.__payment_method = payment_method
+        self.__total_pay = total_pay
+        self.__commission = commission
 
 
-class PaymentMethod(Employee, Address, HourlyEmployee, SalariedEmployee):
-
-    def __init__(self, first_name, last_name, street_address, city, state, zip_code, total_pay, commission):
-        Employee.__init__(first_name, last_name)
-        Address.__init__(street_address, city, state, zip_code)
-        HourlyEmployee.__init__(total_pay)
-        SalariedEmployee.__init__(commission)

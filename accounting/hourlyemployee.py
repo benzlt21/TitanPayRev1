@@ -7,33 +7,36 @@ OVERTIME = 1.5
 
 class HourlyEmployee(Employee):
 
-    def __init__(self, employee_id, first_name, last_name, rate, weekly_dues):
+    def __init__(self, employee_id, first_name, last_name, weekly_dues, start_date, end_date, start_time, end_time, rate, pay):
         Employee.__init__(employee_id, first_name, last_name, weekly_dues)
+        TimeCard.__init__(start_date, end_date, start_time, end_time)
         self.__rate = rate
+        self.__pay = pay
         self.__time_card = []
 
     def get_hourly_rate(self, rate):
         return self.__rate
 
-    def clock_in(self, date, start_time):
-        time_start = TimeCard(self, date, start_time)
-        self.__time_card.append(time_start)
+    def get_date(self, date):
+        return self.__date
 
-    def clock_out(self, date, end_time):
-        time_end = TimeCard(self, date, end_time)
-        self.__time_card.append(time_end)
+    def clock_in(self, start_date, start_time):
+        startTime = TimeCard(self, start_date, start_time)
+        self.__time_card.append(startTime)
 
-    def get_pay(self, start_time, end_time, rate):
-        total_hours = 0
-        for hours in self.__time_card:
-            total_hours += hours
+    def clock_out(self, end_date, end_time, date):
+        endTime = TimeCard(self, end_date, end_time)
+        for date in self.__time_card:
+                self.__time_card.append(endTime)
 
-        if total_hours <= HOURS:
-            total_pay = (HOURS * rate)
-        else:
-            overtime_pay = ((total_hours - HOURS) * OVERTIME * rate)
-            regular_pay = (HOURS * rate)
-            total_pay = overtime_pay + regular_pay
-        return total_pay
+    def get_pay(self, start_date, end_date, date):
+        total_pay = 0
+        for date in self.__time_card:
+            if date >= start_date and date <= end_date:
+                pay = TimeCard.calculate_daily_pay()
+                pay += total_pay
 
+        return pay
 
+    def pay(self, pay):
+        return self.__pay
